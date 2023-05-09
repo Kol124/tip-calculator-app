@@ -6,6 +6,7 @@ import {
   useTheme,
   Typography,
 } from "@mui/material";
+import { useFormContext, Controller } from "react-hook-form";
 
 export type InputProps = TextFieldProps & {
   label?: React.ReactNode;
@@ -25,9 +26,9 @@ export const Input: React.FC<InputProps> = ({
     <Box>
       {typeof label === "string" ? (
         <Typography
-          fontWeight='medium'
+          fontWeight={700}
           sx={{ pb: size === "small" ? 0.5 : 1 }}
-          // color={palette.neutral[800]}
+          color={theme.palette.grey[600]}
         >
           {label}
         </Typography>
@@ -39,29 +40,28 @@ export const Input: React.FC<InputProps> = ({
   );
 };
 
-// export const RHFInput: React.FC<
-//   InputProps & {
-//     name: string;
-//     helper?: string | JSX.Element|any;
-//   }
-// > = ({ name, decoration, handleClick, helper, ...props }) => {
-//   const { control } = useFormContext();
+export const RHFInput: React.FC<
+  InputProps & {
+    name: string;
+    helper?: string | JSX.Element | any;
+  }
+> = ({ name, helper, ...props }) => {
+  const { control } = useFormContext();
 
-//   return (
-//     <Controller
-//       name={name}
-//       control={control}
-//       render={({ field: { ref, value, ...rest }, fieldState: { error } }) => (
-//         <Input
-//           inputRef={ref}
-//           {...rest}
-//           error={!!error}
-//           value={value ?? ''}
-//           helperText={helper || error?.message}
-//           {...props}
-//           decoration={decoration}
-//         />
-//       )}
-//     />
-//   );
-// };
+  return (
+    <Controller
+      name={name}
+      control={control}
+      render={({ field: { ref, value, ...rest }, fieldState: { error } }) => (
+        <Input
+          inputRef={ref}
+          {...rest}
+          error={!!error}
+          value={value ?? ""}
+          helperText={helper || error?.message}
+          {...props}
+        />
+      )}
+    />
+  );
+};

@@ -6,11 +6,12 @@ export default function textField(theme: Theme) {
       styleOverrides: {
         root: {
           "& .MuiInputBase-root": {
-            borderRadius: "6px",
+            borderRadius: "4px",
             padding: "0 8px 0 16px",
-            backgroundColor: "#F6F8FB",
-            boxShadow:
-              "inset -4px -4px 9px rgba(255, 255, 255, 0.88), inset 0px 2px 14px rgba(193, 208, 238, 0.5)",
+            color: theme.palette.primary.dark,
+            backgroundColor: theme.palette.grey[100],
+            // boxShadow:
+            //   "inset -4px -4px 9px rgba(255, 255, 255, 0.88), inset 0px 2px 14px rgba(193, 208, 238, 0.5)",
 
             "& .MuiInputAdornment-root": {
               marginRight: "4px",
@@ -25,18 +26,21 @@ export default function textField(theme: Theme) {
             },
 
             "& input": {
+              textAlign: "right",
+              fontSize: "20px",
               padding: "8px 0",
-              fontSize: "14px",
+              fontWeight: 700,
               borderRadius: 0,
               ":-webkit-autofill, :-webkit-autofill:focus": {
                 transition: "background-color 600000s 0s, color 600000s 0s",
               },
-            },
-
-            "& textarea": {
-              borderRadius: 0,
-              fontSize: "14px",
-              padding: "8px 0",
+              "::-webkit-outer-spin-button, ::-webkit-inner-spin-button": {
+                margin: 0,
+                "-webkit-appearance": "none",
+              },
+              "&[type=number]": {
+                "-moz-appearance": "textField",
+              },
             },
 
             "&:hover fieldset": {
@@ -49,8 +53,8 @@ export default function textField(theme: Theme) {
 
           "& .MuiInputBase-root.Mui-focused": {
             backgroundColor: "#F7FBFF",
-            boxShadow:
-              "0px 0px 4px rgba(2, 2, 2, 0.25), 0px 0px 0px 3px #E6C1F7",
+            // border: `3px solid ${theme.palette.primary.main}`,
+            boxShadow: `0px 0px 3px ${theme.palette.primary.main}, 0px 0px 0px 2px ${theme.palette.primary.main}`,
 
             "& fieldset": { border: `1px solid ${theme.palette.grey[100]}` },
           },

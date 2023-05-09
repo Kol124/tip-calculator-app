@@ -1,45 +1,71 @@
+// mui
 import { useTheme } from "@mui/material/styles";
 import Box, { BoxProps } from "@mui/material/Box";
+// form
+import { useFormContext, Controller } from "react-hook-form";
+// redux
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import {
+  setTip,
+  selectTipCalculator,
+} from "../../app/slices/tipCalculatorSlice";
 
 type TipButtonType = {
-  value: number;
-  sx: BoxProps["sx"];
+  sx?: BoxProps["sx"];
+  name?: string;
+  value: string;
   onClick?: React.MouseEventHandler<HTMLDivElement>;
 };
 
-const TipButton = ({ sx, value, onClick }: TipButtonType) => {
+const TipButton = ({ sx, name, value }: TipButtonType) => {
   const theme = useTheme();
-  const activeValue = 25;
+  const dispatch = useAppDispatch();
+  const { control, register } = useFormContext();
+  const { tip } = useAppSelector(selectTipCalculator);
+
+  // const handleClick = () => {
+  //   dispatch(setTip(value));
+  // };
 
   return (
     <Box
       sx={{
-        height: 36,
-        fontSize: 18,
-        width: "100%",
-        // fontWeight: 500,
-        textAlign: "center",
-        padding: "4px 8px",
-        cursor: "pointer",
-        borderRadius: "4px",
-        textTransform: "capitalize",
-        color: theme.palette.common.white,
-        background: theme.palette.primary.dark,
-        borderLeft: "1px solid rgba(221, 220, 229, 0.5)",
+        position: "relative",
 
-        "&:first-of-type": {
-          borderRadius: "5px 0 0 5px",
+        input: {
+          opacity: 0,
+          position: "absolute",
+          cursor: "pointer",
+          inset: 0,
         },
 
-        ...(value === activeValue && {
-          color: theme.palette.secondary.main,
+        "input:hover + .MuiBox-root": {
+          color: theme.palette.primary.dark,
           background: theme.palette.grey[500],
-        }),
-        ...sx,
+        },
+
+        "input:checked + .MuiBox-root": {
+          color: theme.palette.primary.dark,
+          background: theme.palette.grey[500],
+        },
       }}
-      onClick={onClick}
+      // onClick={handleClick}
     >
-      {value}%
+      <input type='radio' value={value} {...register(name || "tip")} />
+      <Box
+        sx={{
+          fontSize: 18,
+          width: "100%",
+          padding: "8px 8px",
+          textAlign: "center",
+          borderRadius: "4px",
+          color: theme.palette.common.white,
+          background: theme.palette.primary.dark,
+          ...sx,
+        }}
+      >
+        {`${value}%`}
+      </Box>
     </Box>
   );
 };
