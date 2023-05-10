@@ -72,11 +72,11 @@ function App() {
 
   React.useEffect(() => {
     if (values.customTip) setValue("tip", "");
-  }, [values.customTip]);
+  }, [values.customTip, setValue]);
 
   React.useEffect(() => {
     if (values.tip) setValue("customTip", "");
-  }, [values.tip]);
+  }, [values.tip, setValue]);
 
   React.useEffect(() => {
     const { bill, tip, customTip, numberOfPeople } = values;
@@ -101,7 +101,7 @@ function App() {
         })
       );
     }
-  }, [values]);
+  }, [values, dispatch]);
 
   return (
     <CalculatorLayout>

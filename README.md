@@ -2,11 +2,13 @@
 
 ## Table of contents
 
-- [Overview](#overview)
-  - [The challenge](#the-challenge)
-  - [Screenshot](#screenshot)
-  - [Links](#links)
-  - [Built with](#built-with)
+- [Tip calculator app solution](#tip-calculator-app-solution)
+  - [Table of contents](#table-of-contents)
+  - [Overview](#overview)
+    - [The challenge](#the-challenge)
+    - [Screenshot](#screenshot)
+    - [Links](#links)
+    - [Built with](#built-with)
 
 **Note: Delete this note and update the table of contents based on what sections you keep.**
 
@@ -22,12 +24,14 @@ Users should be able to:
 
 ### Screenshot
 
-![](./tip-calculator-screenshot.png)
+![](public/tip-calculator-screenshot.png)
 
 ### Links
+
 - Live Site URL: [Add live site URL here](https://your-live-site-url.com)
 
 ### Built with
+
 - TypeScript
 - [React](https://reactjs.org/) - JS library
 - [React Hook Form](https://react-hook-form.com/) - Form Validation
