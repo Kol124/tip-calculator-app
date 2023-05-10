@@ -67,7 +67,11 @@ function App() {
     defaultValues,
   });
 
-  const { watch, setValue } = methods;
+  const {
+    watch,
+    setValue,
+    formState: { errors },
+  } = methods;
   const values = watch();
 
   React.useEffect(() => {
@@ -93,7 +97,10 @@ function App() {
       );
     }
 
-    if (!bill && !tipValue && !numberOfPeople) {
+    if (
+      (!bill && !tipValue && !numberOfPeople) ||
+      Object.keys(errors).length > 0
+    ) {
       dispatch(
         setResult({
           amount: 0,
@@ -101,7 +108,7 @@ function App() {
         })
       );
     }
-  }, [values, dispatch]);
+  }, [values, dispatch, errors]);
 
   return (
     <CalculatorLayout>
