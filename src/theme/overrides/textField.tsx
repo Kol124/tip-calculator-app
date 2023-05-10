@@ -6,12 +6,10 @@ export default function textField(theme: Theme) {
       styleOverrides: {
         root: {
           "& .MuiInputBase-root": {
-            borderRadius: "4px",
-            padding: "0 8px 0 16px",
+            borderRadius: "6px",
+            padding: "0 16px 0 16px",
             color: theme.palette.primary.dark,
             backgroundColor: theme.palette.grey[100],
-            // boxShadow:
-            //   "inset -4px -4px 9px rgba(255, 255, 255, 0.88), inset 0px 2px 14px rgba(193, 208, 238, 0.5)",
 
             "& .MuiInputAdornment-root": {
               marginRight: "4px",
@@ -27,8 +25,8 @@ export default function textField(theme: Theme) {
 
             "& input": {
               textAlign: "right",
-              fontSize: "20px",
-              padding: "8px 0",
+              fontSize: "24px",
+              padding: "4px 0",
               fontWeight: 700,
               borderRadius: 0,
               ":-webkit-autofill, :-webkit-autofill:focus": {
@@ -36,10 +34,10 @@ export default function textField(theme: Theme) {
               },
               "::-webkit-outer-spin-button, ::-webkit-inner-spin-button": {
                 margin: 0,
-                "-webkit-appearance": "none",
+                WebkitAppearance: "none",
               },
               "&[type=number]": {
-                "-moz-appearance": "textField",
+                MozAppearance: "textField",
               },
             },
 
@@ -52,7 +50,6 @@ export default function textField(theme: Theme) {
           },
 
           "& .MuiInputBase-root.Mui-focused": {
-            backgroundColor: "#F7FBFF",
             // border: `3px solid ${theme.palette.primary.main}`,
             boxShadow: `0px 0px 3px ${theme.palette.primary.main}, 0px 0px 0px 2px ${theme.palette.primary.main}`,
 
@@ -60,7 +57,6 @@ export default function textField(theme: Theme) {
           },
 
           "& .MuiInputBase-root.Mui-error": {
-            backgroundColor: "#F7FBFF",
             boxShadow:
               "0px 0px 4px rgba(2, 2, 2, 0.5), 0px 0px 0px 3px #FB8989",
 
@@ -85,10 +81,10 @@ export default function textField(theme: Theme) {
 
           "& .MuiFormHelperText-root": {
             margin: 0,
-            textTransform: "none",
             fontSize: "12px",
+            textTransform: "none",
             marginTop: "4px",
-            color: theme.palette.grey[500],
+            color: theme.palette.grey[200],
           },
           "& .MuiFormHelperText-root.Mui-error": {
             color: theme.palette.error.main,

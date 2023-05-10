@@ -15,9 +15,7 @@ const theme = createTheme({
     primary: {
       main: "hsl(172, 67%, 45%)",
       dark: "hsl(183, 100%, 15%)", // Very Dark cyan
-    },
-    error: {
-      main: "#F33451",
+      light: "hsl(172, 67%, 65%)",
     },
     grey: {
       100: "hsl(189, 41%, 97%)", // Very light grayish cyan
@@ -31,19 +29,6 @@ const theme = createTheme({
   },
   typography: {
     fontFamily: FONT_PRIMARY,
-    h3: {
-      fontWeight: 600,
-    },
-    subtitle1: {
-      fontWeight: 500,
-      fontSize: "1.063rem",
-    },
-    subtitle2: {
-      fontWeight: 400,
-    },
-    overline: {
-      fontSize: 11,
-    },
   },
 });
 

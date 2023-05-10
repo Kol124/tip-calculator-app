@@ -1,6 +1,5 @@
 // import React from 'react';
 // mui
-import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
@@ -11,8 +10,6 @@ import { TipButton } from "../components/TipButton";
 import { RHFInput } from "../components/Input";
 // assets
 import { DollarIcon, PeopleIcon } from "../assets";
-// redux
-import { selectTipCalculator } from "../app/slices/tipCalculatorSlice";
 
 function Billing() {
   const theme = useTheme();
@@ -23,7 +20,12 @@ function Billing() {
         padding: 3,
         width: "100%",
         height: "100%",
+        minHeight: 450,
         justifyContent: "space-between",
+
+        [theme.breakpoints.down("sm")]: {
+          padding: theme.spacing(3, 1, 2),
+        },
       }}
     >
       <RHFInput
@@ -47,23 +49,29 @@ function Billing() {
             Select Tip %
           </Typography>
         </Grid>
-        <Grid item xs={6} sm={4}>
+        <Grid item xs={6} md={4}>
           <TipButton value='5' />
         </Grid>
-        <Grid item xs={6} sm={4}>
+        <Grid item xs={6} md={4}>
           <TipButton value='10' />
         </Grid>
-        <Grid item xs={6} sm={4}>
+        <Grid item xs={6} md={4}>
           <TipButton value='15' />
         </Grid>
-        <Grid item xs={6} sm={4}>
+        <Grid item xs={6} md={4}>
           <TipButton value='25' />
         </Grid>
-        <Grid item xs={6} sm={4}>
+        <Grid item xs={6} md={4}>
           <TipButton value='50' />
         </Grid>
-        <Grid item xs={6} sm={4}>
-          <RHFInput name='tip' fullWidth />
+        <Grid item xs={6} md={4}>
+          <RHFInput
+            name='customTip'
+            fullWidth
+            type='number'
+            custom
+            placeholder='Custom'
+          />
         </Grid>
       </Grid>
 
@@ -75,7 +83,7 @@ function Billing() {
         placeholder='0'
         InputProps={{
           startAdornment: (
-            <InputAdornment position='start' sx={{ mr: "0 !important" }}>
+            <InputAdornment position='start'>
               <PeopleIcon />
             </InputAdornment>
           ),

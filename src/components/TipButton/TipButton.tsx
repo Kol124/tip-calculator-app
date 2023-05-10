@@ -2,30 +2,18 @@
 import { useTheme } from "@mui/material/styles";
 import Box, { BoxProps } from "@mui/material/Box";
 // form
-import { useFormContext, Controller } from "react-hook-form";
-// redux
-import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import {
-  setTip,
-  selectTipCalculator,
-} from "../../app/slices/tipCalculatorSlice";
+import { useFormContext } from "react-hook-form";
 
 type TipButtonType = {
-  sx?: BoxProps["sx"];
   name?: string;
   value: string;
+  sx?: BoxProps["sx"];
   onClick?: React.MouseEventHandler<HTMLDivElement>;
 };
 
 const TipButton = ({ sx, name, value }: TipButtonType) => {
   const theme = useTheme();
-  const dispatch = useAppDispatch();
-  const { control, register } = useFormContext();
-  const { tip } = useAppSelector(selectTipCalculator);
-
-  // const handleClick = () => {
-  //   dispatch(setTip(value));
-  // };
+  const { register } = useFormContext();
 
   return (
     <Box
@@ -41,24 +29,24 @@ const TipButton = ({ sx, name, value }: TipButtonType) => {
 
         "input:hover + .MuiBox-root": {
           color: theme.palette.primary.dark,
-          background: theme.palette.grey[500],
+          background: theme.palette.primary.light,
         },
 
         "input:checked + .MuiBox-root": {
           color: theme.palette.primary.dark,
-          background: theme.palette.grey[500],
+          background: theme.palette.primary.main,
         },
       }}
-      // onClick={handleClick}
     >
       <input type='radio' value={value} {...register(name || "tip")} />
       <Box
         sx={{
-          fontSize: 18,
+          fontSize: 20,
           width: "100%",
-          padding: "8px 8px",
+          fontWeight: 700,
+          padding: "6px 8px",
           textAlign: "center",
-          borderRadius: "4px",
+          borderRadius: "6px",
           color: theme.palette.common.white,
           background: theme.palette.primary.dark,
           ...sx,
