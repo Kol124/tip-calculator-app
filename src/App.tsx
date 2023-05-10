@@ -47,7 +47,7 @@ function App() {
     numberOfPeople: Yup.lazy((value) =>
       value === ""
         ? Yup.string()
-        : Yup.number().positive("Can't be zero").max(100, "")
+        : Yup.number().positive("Can't be zero").max(100, "Max 100")
     ),
     customTip: Yup.lazy((value) =>
       value === "" ? Yup.string() : Yup.number().positive("").max(100, "")
@@ -86,7 +86,12 @@ function App() {
     const { bill, tip, customTip, numberOfPeople } = values;
     const tipValue = Number(tip || customTip);
 
-    if (Number(bill) > 0 && tipValue > 0 && Number(numberOfPeople) > 0) {
+    if (
+      Number(bill) > 0 &&
+      tipValue > 0 &&
+      Number(numberOfPeople) > 0 &&
+      Object.keys(errors).length === 0
+    ) {
       const total = (Number(bill) * (tipValue / 100)) / Number(numberOfPeople);
 
       dispatch(
